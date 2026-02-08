@@ -1,819 +1,1639 @@
-<!DOCTYPE html>
-<html lang="en"><head>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
-  <meta charset="UTF-8"><title>Valentine Letter for Anu ❤️</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-  
-body{
-  
-margin:0;
-  
-font-family:'Georgia',serif;
-  
-background:linear-gradient(135deg,#120018,#2a001a,#000);
-  
-display:flex;
-  
-justify-content:center;
-  
-align-items:center;
-  
-height:100vh;
-  
-overflow:hidden;
-  
-}
-  
-
-  
-/* LOCK */
-  
-.lock{
-  
-position:fixed; inset:0;
-  
-background:#000;
-  
-color:#fff;
-  
-display:flex;
-  
-flex-direction:column;
-  
-justify-content:center;
-  
-align-items:center;
-  
-z-index:10;
-  
-}
-  
-.lock button{
-  
-margin-top:12px;padding:10px 22px;
-  
-border:none;border-radius:20px;
-  
-background:#ff4d6d;color:#fff;
-  
-}
-  
-
-  
-/* BOOK */
-  
-.book{
-  
-width:92vw;
-  
-max-width:380px;
-  
-height:85vh;
-  
-background:#fdf6ee;
-  
-border-radius:14px;
-  
-box-shadow:0 20px 50px rgba(0,0,0,.5);
-  
-position:relative;
-  
-overflow:hidden;
-  
-}
-  
-.book{
-  display:none;
-  }
-  
-/* NOTEBOOK PAGE */
-  
-.page{
-  
-position:absolute; inset:0;
-  
-padding:26px 18px 70px 28px;
-  
-display:none;
-  
-overflow-y:auto;
-  
-background:
-  
-repeating-linear-gradient(
-  
-  to bottom,
-  
-  #fdf6ee,
-  
-  #fdf6ee 28px,
-  
-  #e7d6c6 29px
-  
-);
-  
-}
-  
-
-  
-/* red margin */
-  
-.page:before{
-  
-content:"";
-  
-position:absolute;
-  
-left:18px; top:0; bottom:0;
-  
-width:2px;
-  
-background:#d46a6a;
-  
-}
-  
-
-  
-.page h2{
-  
-margin-top:0;
-  
-color:#7a1b3a;
-  
-}
-  
-
-  
-.page p{
-  font-family:'Dancing Script',cursive;
-  font-size:18px;
-  line-height:1.9;
-  color:#2b1b1b;
-}
-  
-
-  
-.page img.photo{
-  
-width:100%;
-  
-border-radius:12px;
-  
-margin:14px 0;
-  
-}
-  
-
-  
-.gif{
-  
-width:65px;
-  
-display:block;
-  
-margin:8px auto;
-  
-}
-  
-
-  
-/* NAV */
-  
-.nav{
-  
-position:absolute;
-  
-bottom:12px; left:0; right:0;
-  
-display:flex;
-  
-justify-content:space-between;
-  
-padding:0 14px;
-  
-}
-  
-.nav button{
-  
-padding:8px 16px;
-  
-border:none;
-  
-border-radius:20px;
-  
-background:#7a1b3a;
-  
-color:#fff;
-  
-}
-  
-
-  
-/* HEARTS */
-  
-.heart{
-  
-position:fixed;
-  
-bottom:-20px;
-  
-font-size:18px;
-  
-animation:float 6s linear infinite;
-  
-color:#ff4d6d;
-  
-}
-  
-@keyframes float{
-  
-to{transform:translateY(-900px);opacity:0}
-  
-}
-  @keyframes breathe {
-  0%,100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-}
-
-.lock {
-  animation: breathe 3s ease-in-out infinite;
-}
-.typing {
-  display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
-  border-right: 2px solid #ff4d6d;
-  width: 0; /* start width */
-  animation: typing 4s steps(17,end) forwards, blink .7s infinite;
-}
-@keyframes typing {
-  from { width: 0; }
-  to { width: 17ch; } /* text length ke hisaab se */
-}
-@keyframes blink {
-  50% { border-color: transparent; }
-}
-  .unlock-hide {
-  animation: melt 1.2s forwards;
-}
-
-@keyframes melt {
-  to {
-    opacity: 0;
-    transform: scale(1.2);
-    filter: blur(20px);
-  }
-}
-  .page{
-  animation: pageFade .6s ease;
-}
-
-@keyframes pageFade{
-  from{opacity:0; transform:translateX(20px);}
-  to{opacity:1; transform:translateX(0);}
-}
-  .lock h1{
-  text-shadow:0 0 15px rgba(255,77,109,.8);
-}
-
-@keyframes shake{
-  0%,100%{transform:translateX(0)}
-  25%{transform:translateX(-5px)}
-  75%{transform:translateX(5px)}
-}
-.lock.shake{
-  animation:shake .4s;
-}
-.dots{
-  position:absolute;
-  top:10px;
-  left:50%;
-  transform:translateX(-50%);
-  display:flex;
-  gap:6px;
-}
-.dots span{
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  background:#caa;
-  opacity:.4;
-}
-.dots span.active{
-  opacity:1;
-  background:#7a1b3a;
-}
-  .last-surprise{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.88);
-  z-index:20;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
-  text-align:center;
-  color:#fff;
-  padding:20px;
-}
-
-#finalNote{
-  display:none;
-  margin-top:16px;
-  font-family:'Dancing Script',cursive;
-  font-size:22px;
-  line-height:1.8;
-}
-  .final-reply{
-  display:inline-block !important;
-  }
-  /* Sirf last-surprise ke reply button ko show karenge */
-button[onclick="openSnap()"]{
-  display:none;
-}
-
-/* Add instead */
-.last-surprise button[onclick="openSnap()"]{
-  display:inline-block !important;
-}
-
-</style></head><body><!-- LOCK --><div class="lock lock-page" id="lock">
-  <h1>💌 Valentine’s Letter for Anu</h1>
-  <p class="typing">Unlock my heart ❤️</p>
-  <input id="pass" type="password" placeholder="Secret password">
-  <button onclick="unlock()">Open 💕</button>
-</div>
-<audio id="music" loop></audio><!-- BOOK --><div class="book">
-  <div class="dots" id="dots"></div><!-- PAGE 0 : VALENTINE LETTER --><div class="page"><img class="gif" src="mm1.gif"><h2>My Valentine, Anu ❤️</h2><p>This letter is written with all the love I have for you. 
-
-Jab bhi aap door hoti ho, meri feelings shabdon ka sahara leti hain, 
-
-aur har shabd ka matlab sirf aap hoti ho.
-
-Aap meri zindagi ka sabse khoobsurat hissa ho. 
-
-Apki awaaz meri thakaan mita deti hai, 
-
-Apki smile meri duniya roshan kar deti hai,apki adayen mujhe m energy la deti hai.
-
-Long distance ne hume thoda door rakha hai, 
-
-par mera dil har pal apke saath rehta hai. 
-
-Main har din har samye apko miss karta hoon, 
-
-har raat apki khayalon ke saath so jaata hoon.
-
-This Valentine’s letter is my promise — 
-
-chahe kitna bhi waqt lage, 
-
-main hamesha apka hi rahunga.
-
-With all my love, 
-<strong>Naitik ❤️</strong>
-
-
-<img class="photo" src="award.jpg">
-The award goess to my wife Anshika Naitik Tiwari😘😘
-
-  
-</p></div><!-- PAGE 1 --><div class="page"><img class="gif" src="mm2.gif"><h2>🌹 Rose Day</h2><img class="photo" src="rose.jpg"><img class="photo" src="rose2.jpg"><p>Aap meri zindagi ka sabse khoobsurat phool ho. 
-
-Jitna dekhta hoon, utna pyaar badhta jaata hai,or apko dekhte sbse phle mera dil khush ho jata hai fir dusra apki property khush ho jata hai itna k shnt hi nhi hota hai...😫
-
-</p></div><!-- PAGE 2 --><div class="page"><img class="gif" src="mm3.gif"><h2>💍 Propose Day</h2><img class="photo" src="propose.jpg"><p>Main apko roz choose karta hoon — 
-
-aaj bhi, kal bhi, aur hamesha ❤️ baby vese bohot br apko puch chuka hu but ek or br "will uu merry me jaan". as u know m to jaan sidha shadi k liye hi propose krta hu...😘
-
-</p></div><!-- PAGE 3 --><div class="page"><img class="gif" src="mm5.gif"><h2>🍫 Chocolate Day</h2><img class="photo" src="chocolate.jpg"><img class="photo" src="chocolate2.jpg"><p>Aap meri zindagi ki sweetness ho. 
-
-Bilkul chocolate jaise… addictive 😘,jnti ho jaan m kassh vha hota to apko apne hath se chocolate khilta apni lap pr bitha kr..😉and chocolate flavour k vo bhi lata...😉😉.
-
-babyyy u know m kitna misss krta hu apni naughty anu k...😫😫. Phle to roj milti thi but ab to rarely hi ati hai vo mile jaan to usee bolna uske naitik daddy bohot miss kr rhe hai usee...😘😘
-
-</p></div><!-- PAGE 4 --><div class="page"><img class="gif" src="mm1.gif"><h2>🧸 Teddy Day</h2><img class="photo" src="teddy.jpg"><p>Jab aap paas nahi hoti, 
-
-Apki yaadein mujhe hug karti hain ❤️,baby apko yaad hai pichle saal jb aap teddy bear k bolti thi k apka Mann hota hai uske sath hug krke so jau tb mujhe bohot jealousy hoti thi but I know ur teddy bear is only-naitik-. He na jaan..?
-
-</p></div><!-- PAGE 5 --><div class="page"><img class="gif" src="mm2.gif"><h2>🤞 Promise Day</h2><img class="photo" src="promise.jpg"><p>M jnta hu jaan m kuch confirm nhi bolunga but I promise apke  exams ke baad April mein aaunga. 
-
-Date fix nahi… par main fix hoon — tumhare liye  💍
-
-</p></div><!-- PAGE 6 --><div class="page"><img class="gif" src="mm8.gif"><h2>🤗 Hug Day</h2><img class="photo" src="hug.jpg"><p>Apka hug meri har problem ka solution hai ❤️,u know jaan kitne aise moments aye jisme bss yhi Mann hua k bss apko apni bahoo m bhr lu baki puri duniya jye bhaad m.
-
-baby u know m humesha kuch n kuch try krte rehta hu jisse aap khush ho jaao...
-
-</p></div><!-- PAGE 7 --><div class="page"><img class="gif" src="mm4.gif"><img class="gif" src="mm7.gif"><h2>💋 Kiss Day</h2><img class="photo" src="kiss.jpg"><img class="photo" src="kiss2.jpg"><img class="photo" src="kiss3.jpg"><img class="photo" src="kiss4.jpg"><p>Har kiss ek promise hai — 
-
-chahe distance ho ya duniya, aap meri ho.aap nhi jnti jaan apki hr ek kiss mujhe kitna khushi deta hai bhale vo  kiss apke snaps s mila ho chats m. 😘
-
-aap yhi miss kr rhi ho k m vha nhi hu nhi abhi tk yo tabahi macha deta,apki body k ek kona bhi na chodta hr jgha kisss and love bites..😘😘😘
-
-</p></div><!-- PAGE 8 : MISS YOU --><div class="page"><img class="gif" src="mm6.gif"><h2>❤️ Valentine’s Day</h2><img class="photo" src="valentine.jpg"><img class="photo" src="valentine2.jpg"><img class="photo" src="valentine3.jpg"><img class="photo" src="valentine4.jpg"><img class="photo" src="valentine5.jpg"><img class="photo" src="valentine6.jpg"><p>29 October 2024 —</p>
-<p id="counter" style="font-weight:bold; margin-top:10px;"></p> 
-
-woh din jab meri zindagi ko aap phli br mili thi.
-
-I miss you more than words can explain. 
-
-Har chhoti chhoti cheez mujhe apki yaad dila deti hai — 
-
-Apki hasi, apki baatein, apka hona.
-
-April mein, apke exams ke baad… 
-
-jab main apse milunga, 
-
-shayad kuch bol na paun, 
-
-par mera hug sab kuch keh dega ❤️
-
-Baby i want to hear yourr loud moans while u are calling my every name,Baby I hope that k isbr pkka sab shi ho jyega,m bohot jyda apne dil k smjha kr betha hu,or jnta hu aap boli to acha hi hoga...,Baby bohot mehnat lgi hai ye banane m shi m bohot mtlb bohot jyda hi hath drd krne lge jaan mere,ab bss i'am waiting for your reply and my gift...😉
-
-I Love uuu jaaannn😘😘😘😘😘
-
-     
-   <strong>Your Husband — Naitik (daddy😉)💍</strong>
-
-
-
-
-
-
-<button onclick="toggleSecret()" style="margin-top:14px;">
-  Tap here… something I never say 💌
-</button>
-
-
-
-<p id="secretText" style="display:none; margin-top:12px;">
-  Tum meri zindagi ka wo hissa ho,
-  jise main lafzon me kam,
-  aur dil se zyada mehsoos karta ho ❤️
-  I loveeeeeeeeee uuuuuuuuuu meriiii jaaaaaannnnnnnn🥹🥹
-  or ye m puri duniya k smne keh skta hu k m sbse jyda pyar apni jaaan s krta hu....😘😘
-
-</p></div>
-  <div class="nav">
-  <button onclick="prev()">◀ Prev</button>
-  <button onclick="next()">Next ▶</button>
-
-  <!-- LAST PAGE ONLY BUTTONS -->
-  <span id="lastPageButtons" style="display:none;">
-    <button onclick="openVoiceSurprise()" style="margin-top:10px;">
-      Hear My Voice 🎧
-    </button>
-  </span>
-  </div>
-
-
-<div id="voiceSurprise" class="last-surprise">
-  <p style="font-size:18px;">Close your eyes & listen ❤️</p>
-
-  <audio controls style="margin-top:10px;">
-    <source src="voice-note.mp3" type="audio/mpeg">
-  </audio>
-
-  <button onclick="revealNote()" style="margin-top:18px;">
-    One Last Surprise 💖
-  </button>
-
-  <p id="finalNote">
-    Tum meri zindagi ka wo hissa ho,<br>
-    jise main lafzon me kam,<br>
-    aur dil se zyada mehsoos karta ho ❤️<br><br>
-    I love you forever, Anu.
-  </p>
-
-  <button onclick="openSnap()" style="margin-top:22px;">
-    Reply to Naitik 👻💛
-  </button>
-<div style="margin-top:20px;">
-  <button id="startRec">🎤 💌Anu left a voice for Naitik ♥️</button>
-  <button id="stopRec" disabled>⏹ Stop</button>
-  <p id="recStatus"></p>
-  <p id="voiceLabel" style="display:none;">
-  🎧 Voice saved for Naitik ❤️
-  </p>
-
-  <audio id="playback" controls style="display:none; margin-top:10px;"></audio>
-</div>
-<script>
-/* ---------- DATE COUNTER ---------- */
-const startDate = new Date("2024-10-29");
-function updateCounter(){
-  const now = new Date();
-  const diff = now - startDate;
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  document.getElementById("counter").innerText =
-    `It’s been ${days} days since we met ❤️`;
-}
-updateCounter();
-
-
-
-/* ---------- PAGES ---------- */
-const pages = document.querySelectorAll(".page");
-let i = 0;const dots = document.getElementById("dots");
-pages.forEach(()=>dots.innerHTML += "<span></span>");
-const dotEls = dots.querySelectorAll("span");
-i = 0;
-function showPage() {
-  pages.forEach(p => p.style.display = "none");
-  pages[i].style.display = "block";
-
-  // retrigger animation
-  pages[i].style.animation = "none";
-  pages[i].offsetHeight;
-  pages[i].style.animation = "pageFade .6s ease";
-
-  // Mood background change
-  changeMoodBG(i);
-
-  // Nav dots
-  dotEls.forEach(d => d.classList.remove("active"));
-  dotEls[i].classList.add("active");
-
-  // Petals
-  createPagePetals(i);
-
-  // LAST PAGE BUTTONS ONLY
-  document.getElementById("lastPageButtons").style.display = (i === pages.length - 1) ? "inline-block" : "none";
-
-  // Vibrate only on last page
-  if(i === pages.length - 1){
-    navigator.vibrate?.(200);
-  }
-}
-
-  function prev(){
-  if(i > 0){
-    i--;
-    changeSong(i);   // ✅ USER CLICK → MUSIC OK
-    showPage();
-  }
-}
-
-function next(){
-  if(i < pages.length - 1){
-    i++;
-    changeSong(i);   // ✅ USER CLICK → MUSIC OK
-    showPage();
-  }
-}
-
-/* ---------- UNLOCK ---------- */
-function unlock(){
-  const pass = document.getElementById("pass").value.trim();
-  const lock = document.getElementById("lock");
-  const book = document.querySelector(".book");
-
-  if(pass.toLowerCase() === "anu.naitik"){
-    lock.style.display = "none";
-    book.style.display = "block";
-  
-    i = 0;
-    showPage();
-
-    // 🔥 FIRST SONG START (unlock button = user gesture)
-    music.src = songs[0];
-    music.currentTime = 0;
-    music.volume = 0.6;
-    music.play();
-
-    currentSong = 0;
-    initVoiceRecorder();
-  } else {
-    lock.classList.add("shake");
-    setTimeout(()=>lock.classList.remove("shake"),400);
-  }
-  }
-
-                                       
-/* ---------- HEARTS ---------- */
-setInterval(()=>{
-  let h = document.createElement("div");
-  h.className = "heart";
-  h.innerHTML = "❤️";
-  h.style.left = Math.random()*100 + "%";
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(),6000);
-},500);
-
-/* ---------- SECRET / CONFETTI ---------- */
-function toggleSecret(){
-  const s = document.getElementById("secretText");
-  s.style.display = (s.style.display === "none") ? "block" : "none";
-  createConfetti(); // mini confetti on toggle
-}
-function openSnap(){
-  window.open("https://www.snapchat.com/add/naitik_tiwari08","_blank");
-}
-
-/* ---------- MINI CONFETTI ---------- */
-function createConfetti(){
-  const colors = ["#ff4d6d","#ffb3c1","#ff66a3","#ff99cc"];
-  for(let j=0;j<60;j++){
-    let conf = document.createElement("div");
-    conf.style.position = "fixed";
-    conf.style.width = "6px";
-    conf.style.height = "6px";
-    conf.style.background = colors[Math.floor(Math.random()*colors.length)];
-    conf.style.top = "0px";
-    conf.style.left = Math.random()*window.innerWidth + "px";
-    conf.style.borderRadius = "50%";
-    conf.style.zIndex = 15;
-    conf.style.opacity = Math.random();
-    document.body.appendChild(conf);
-    let speedY = 2 + Math.random()*3;
-    let speedX = -1 + Math.random()*2;
-    let fall = setInterval(()=>{
-      let top = parseFloat(conf.style.top);
-      let left = parseFloat(conf.style.left);
-      if(top > window.innerHeight){
-        clearInterval(fall);
-        conf.remove();
-      } else {
-        conf.style.top = top + speedY + "px";
-        conf.style.left = left + speedX + "px";
-      }
-    },20);
-  }
-  }
-/* ---------- PAGE-SPECIFIC PETALS / FLOWERS ---------- */
-function createPagePetals(pageIndex){
-  // Remove old petals
-  document.querySelectorAll(".petal").forEach(p=>p.remove());
-
-  const petalsByPage = [
-    ["🌹","🌹","🌹"], // Page 0
-    ["🌹","🌹"],      // Page 1
-    ["💍","💍"],      // Page 2
-    ["🍫","🍫"],      // Page 3
-    ["🧸","🧸"],      // Page 4
-    ["🤞","🤞"],      // Page 5
-    ["🤗","🤗"],      // Page 6
-    ["💋","💋"],      // Page 7
-    ["❤️","❤️","❤️"] // Page 8
-  ];
-
-  const petals = petalsByPage[pageIndex] || [];
-  petals.forEach(emoji=>{
-    let p = document.createElement("div");
-    p.className = "petal";
-    p.innerHTML = emoji;
-    p.style.position = "fixed";
-    p.style.fontSize = "24px";
-    p.style.left = Math.random()*window.innerWidth + "px";
-    p.style.top = "-40px";
-    p.style.zIndex = 15;
-    document.body.appendChild(p);
-
-    let speedY = 2 + Math.random()*2;
-    let speedX = -1 + Math.random()*2;
-    let fall = setInterval(()=>{
-      let top = parseFloat(p.style.top);
-      let left = parseFloat(p.style.left);
-      if(top > window.innerHeight){
-        clearInterval(fall);
-        p.remove();
-      } else {
-        p.style.top = top + speedY + "px";
-        p.style.left = left + speedX + "px";
-      }
-    },20);
-  });
-}
-/* ---------- MUSIC (SAFE VERSION) ---------- */
-const songs = [
-  "song0.mp3","song1.mp3","song2.mp3","song3.mp3",
-  "song4.mp3","song5.mp3","song6.mp3","song7.mp3","song8.mp3"
-];
-
-const music = document.getElementById("music");
-let currentSong = -1;
-
-function changeSong(index){
-  if(currentSong === index) return;
-  currentSong = index;
-
-  music.pause();
-  music.src = songs[index];
-  music.currentTime = 0;
-  music.volume = 0.5;
-  music.play();
-}
-  function openVoiceSurprise(){
-  document.getElementById("voiceSurprise").style.display = "flex";
-}
-
-function revealNote(){
-  document.getElementById("finalNote").style.display = "block";
-  }
-  function changeMoodBG(index){
-  const moods = [
-    "linear-gradient(135deg,#fff1f5,#ffd6e0)",   // Page 0
-    "linear-gradient(135deg,#ffe6f0,#ffb3c1)",   // Page 1
-    "linear-gradient(135deg,#fff5cc,#ffd966)",   // Page 2
-    "linear-gradient(135deg,#3b1d1d,#5a2a2a)",   // Page 3
-    "linear-gradient(135deg,#f2e9ff,#d6c7ff)",   // Page 4
-    "linear-gradient(135deg,#e0fff5,#b2f0e6)",   // Page 5
-    "linear-gradient(135deg,#e6f2ff,#b3d9ff)",   // Page 6
-    "linear-gradient(135deg,#ffe6ea,#ffb3c7)",   // Page 7
-    "linear-gradient(135deg,#120018,#2a001a)"    // Page 8
-  ];
-
-  document.body.style.background = moods[index] || moods[index]
-  }
-  /* ========= VOICE REACTION (SAFE) ========= */
-function initVoiceRecorder(){
-  const startBtn = document.getElementById("startRec");
-  const stopBtn = document.getElementById("stopRec");
-  const statusTxt = document.getElementById("recStatus");
-  const playback = document.getElementById("playback");
-  const label = document.getElementById("voiceLabel");
-
-  let mediaRecorder;
-  let audioChunks = [];
-
-  startBtn.onclick = async () => {
-  try {
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-
-    mediaRecorder = new MediaRecorder(stream);
-    audioChunks = [];
-
-    mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
-
-    mediaRecorder.onstart = () => {
-      statusTxt.innerText = "🎙 Recording… bol dil se ❤️";
-    };
-
-    mediaRecorder.onstop = () => {
-      const audioBlob = new Blob(audioChunks, { type: "audio/webm" });
-      playback.src = URL.createObjectURL(audioBlob);
-      playback.style.display = "block";
-      statusTxt.innerText = "💖 Voice recorded successfully";
-    };
-
-    mediaRecorder.start();
-    startBtn.disabled = true;
-    stopBtn.disabled = false;
-
-  } catch (err) {
-    alert("Mic permission denied 😢");
-    console.error(err);
-  }
-};
-
-  stopBtn.onclick = () => {
-    mediaRecorder.stop();
-    startBtn.disabled = false;
-    stopBtn.disabled = true;
-  };
-  }
-</script>
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+
+<!DOCTYPE html>
+
+<html lang="en"><head>
+
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
+
+  <meta charset="UTF-8"><title>Valentine Letter for Anu ❤️</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+  
+
+body{
+
+  
+
+margin:0;
+
+  
+
+font-family:'Georgia',serif;
+
+  
+
+background:linear-gradient(135deg,#120018,#2a001a,#000);
+
+  
+
+display:flex;
+
+  
+
+justify-content:center;
+
+  
+
+align-items:center;
+
+  
+
+height:100vh;
+
+  
+
+overflow:hidden;
+
+  
+
+}
+
+  
+
+
+
+  
+
+/* LOCK */
+
+  
+
+.lock{
+
+  
+
+position:fixed; inset:0;
+
+  
+
+background:#000;
+
+  
+
+color:#fff;
+
+  
+
+display:flex;
+
+  
+
+flex-direction:column;
+
+  
+
+justify-content:center;
+
+  
+
+align-items:center;
+
+  
+
+z-index:10;
+
+  
+
+}
+
+  
+
+.lock button{
+
+  
+
+margin-top:12px;padding:10px 22px;
+
+  
+
+border:none;border-radius:20px;
+
+  
+
+background:#ff4d6d;color:#fff;
+
+  
+
+}
+
+  
+
+
+
+  
+
+/* BOOK */
+
+  
+
+.book{
+
+  
+
+width:92vw;
+
+  
+
+max-width:380px;
+
+  
+
+height:85vh;
+
+  
+
+background:#fdf6ee;
+
+  
+
+border-radius:14px;
+
+  
+
+box-shadow:0 20px 50px rgba(0,0,0,.5);
+
+  
+
+position:relative;
+
+  
+
+overflow:hidden;
+
+  
+
+}
+
+  
+
+.book{
+
+  display:none;
+
+  }
+
+  
+
+/* NOTEBOOK PAGE */
+
+  
+
+.page{
+
+  
+
+position:absolute; inset:0;
+
+  
+
+padding:26px 18px 70px 28px;
+
+  
+
+display:none;
+
+  
+
+overflow-y:auto;
+
+  
+
+background:
+
+  
+
+repeating-linear-gradient(
+
+  
+
+  to bottom,
+
+  
+
+  #fdf6ee,
+
+  
+
+  #fdf6ee 28px,
+
+  
+
+  #e7d6c6 29px
+
+  
+
+);
+
+  
+
+}
+
+  
+
+
+
+  
+
+/* red margin */
+
+  
+
+.page:before{
+
+  
+
+content:"";
+
+  
+
+position:absolute;
+
+  
+
+left:18px; top:0; bottom:0;
+
+  
+
+width:2px;
+
+  
+
+background:#d46a6a;
+
+  
+
+}
+
+  
+
+
+
+  
+
+.page h2{
+
+  
+
+margin-top:0;
+
+  
+
+color:#7a1b3a;
+
+  
+
+}
+
+  
+
+
+
+  
+
+.page p{
+
+  font-family:'Dancing Script',cursive;
+
+  font-size:18px;
+
+  line-height:1.9;
+
+  color:#2b1b1b;
+
+}
+
+  
+
+
+
+  
+
+.page img.photo{
+
+  
+
+width:100%;
+
+  
+
+border-radius:12px;
+
+  
+
+margin:14px 0;
+
+  
+
+}
+
+  
+
+
+
+  
+
+.gif{
+
+  
+
+width:65px;
+
+  
+
+display:block;
+
+  
+
+margin:8px auto;
+
+  
+
+}
+
+  
+
+
+
+  
+
+/* NAV */
+
+  
+
+.nav{
+
+  
+
+position:absolute;
+
+  
+
+bottom:12px; left:0; right:0;
+
+  
+
+display:flex;
+
+  
+
+justify-content:space-between;
+
+  
+
+padding:0 14px;
+
+  
+
+}
+
+  
+
+.nav button{
+
+  
+
+padding:8px 16px;
+
+  
+
+border:none;
+
+  
+
+border-radius:20px;
+
+  
+
+background:#7a1b3a;
+
+  
+
+color:#fff;
+
+  
+
+}
+
+  
+
+
+
+  
+
+/* HEARTS */
+
+  
+
+.heart{
+
+  
+
+position:fixed;
+
+  
+
+bottom:-20px;
+
+  
+
+font-size:18px;
+
+  
+
+animation:float 6s linear infinite;
+
+  
+
+color:#ff4d6d;
+
+  
+
+}
+
+  
+
+@keyframes float{
+
+  
+
+to{transform:translateY(-900px);opacity:0}
+
+  
+
+}
+
+  @keyframes breathe {
+
+  0%,100% { transform: scale(1); }
+
+  50% { transform: scale(1.05); }
+
+}
+
+
+
+.lock {
+
+  animation: breathe 3s ease-in-out infinite;
+
+}
+
+.typing {
+
+  display: inline-block;
+
+  overflow: hidden;
+
+  white-space: nowrap;
+
+  border-right: 2px solid #ff4d6d;
+
+  width: 0; /* start width */
+
+  animation: typing 4s steps(17,end) forwards, blink .7s infinite;
+
+}
+
+@keyframes typing {
+
+  from { width: 0; }
+
+  to { width: 17ch; } /* text length ke hisaab se */
+
+}
+
+@keyframes blink {
+
+  50% { border-color: transparent; }
+
+}
+
+  .unlock-hide {
+
+  animation: melt 1.2s forwards;
+
+}
+
+
+
+@keyframes melt {
+
+  to {
+
+    opacity: 0;
+
+    transform: scale(1.2);
+
+    filter: blur(20px);
+
+  }
+
+}
+
+  .page{
+
+  animation: pageFade .6s ease;
+
+}
+
+
+
+@keyframes pageFade{
+
+  from{opacity:0; transform:translateX(20px);}
+
+  to{opacity:1; transform:translateX(0);}
+
+}
+
+  .lock h1{
+
+  text-shadow:0 0 15px rgba(255,77,109,.8);
+
+}
+
+
+
+@keyframes shake{
+
+  0%,100%{transform:translateX(0)}
+
+  25%{transform:translateX(-5px)}
+
+  75%{transform:translateX(5px)}
+
+}
+
+.lock.shake{
+
+  animation:shake .4s;
+
+}
+
+.dots{
+
+  position:absolute;
+
+  top:10px;
+
+  left:50%;
+
+  transform:translateX(-50%);
+
+  display:flex;
+
+  gap:6px;
+
+}
+
+.dots span{
+
+  width:8px;
+
+  height:8px;
+
+  border-radius:50%;
+
+  background:#caa;
+
+  opacity:.4;
+
+}
+
+.dots span.active{
+
+  opacity:1;
+
+  background:#7a1b3a;
+
+}
+
+  .last-surprise{
+
+  display:none;
+
+  position:fixed;
+
+  inset:0;
+
+  background:rgba(0,0,0,.88);
+
+  z-index:20;
+
+  justify-content:center;
+
+  align-items:center;
+
+  flex-direction:column;
+
+  text-align:center;
+
+  color:#fff;
+
+  padding:20px;
+
+}
+
+
+
+#finalNote{
+
+  display:none;
+
+  margin-top:16px;
+
+  font-family:'Dancing Script',cursive;
+
+  font-size:22px;
+
+  line-height:1.8;
+
+}
+
+  .final-reply{
+
+  display:inline-block !important;
+
+  }
+
+  /* Sirf last-surprise ke reply button ko show karenge */
+
+button[onclick="openSnap()"]{
+
+  display:none;
+
+}
+
+
+
+/* Add instead */
+
+.last-surprise button[onclick="openSnap()"]{
+
+  display:inline-block !important;
+
+}
+
+
+
+</style></head><body><!-- LOCK --><div class="lock lock-page" id="lock">
+
+  <h1>💌 Valentine’s Letter for Anu</h1>
+
+  <p class="typing">Unlock my heart ❤️</p>
+
+  <input id="pass" type="password" placeholder="Secret password">
+
+  <button onclick="unlock()">Open 💕</button>
+
+</div>
+
+<audio id="music" loop></audio><!-- BOOK --><div class="book">
+
+  <div class="dots" id="dots"></div><!-- PAGE 0 : VALENTINE LETTER --><div class="page"><img class="gif" src="mm1.gif"><h2>My Valentine, Anu ❤️</h2><p>This letter is written with all the love I have for you. 
+
+
+
+Jab bhi aap door hoti ho, meri feelings shabdon ka sahara leti hain, 
+
+
+
+aur har shabd ka matlab sirf aap hoti ho.
+
+
+
+Aap meri zindagi ka sabse khoobsurat hissa ho. 
+
+
+
+Apki awaaz meri thakaan mita deti hai, 
+
+
+
+Apki smile meri duniya roshan kar deti hai,apki adayen mujhe m energy la deti hai.
+
+
+
+Long distance ne hume thoda door rakha hai, 
+
+
+
+par mera dil har pal apke saath rehta hai. 
+
+
+
+Main har din har samye apko miss karta hoon, 
+
+
+
+har raat apki khayalon ke saath so jaata hoon.
+
+
+
+This Valentine’s letter is my promise — 
+
+
+
+chahe kitna bhi waqt lage, 
+
+
+
+main hamesha apka hi rahunga.
+
+
+
+With all my love, 
+
+<strong>Naitik ❤️</strong>
+
+
+
+
+
+<img class="photo" src="award.jpg">
+
+The award goess to my wife Anshika Naitik Tiwari😘😘
+
+
+
+  
+
+</p></div><!-- PAGE 1 --><div class="page"><img class="gif" src="mm2.gif"><h2>🌹 Rose Day</h2><img class="photo" src="rose.jpg"><img class="photo" src="rose2.jpg"><p>Aap meri zindagi ka sabse khoobsurat phool ho. 
+
+
+
+Jitna dekhta hoon, utna pyaar badhta jaata hai,or apko dekhte sbse phle mera dil khush ho jata hai...♥️
+
+
+
+</p></div><!-- PAGE 2 --><div class="page"><img class="gif" src="mm3.gif"><h2>💍 Propose Day</h2><img class="photo" src="propose.jpg"><p>Main apko roz choose karta hoon — 
+
+
+
+aaj bhi, kal bhi, aur hamesha ❤️ baby vese bohot br apko puch chuka hu but ek or br "will uu merry me jaan". as u know m to jaan sidha shadi k liye hi propose krta hu...😘
+
+
+
+</p></div><!-- PAGE 3 --><div class="page"><img class="gif" src="mm5.gif"><h2>🍫 Chocolate Day</h2><img class="photo" src="chocolate.jpg"><img class="photo" src="chocolate2.jpg"><p>Aap meri zindagi ki sweetness ho. 
+
+
+
+Bilkul chocolate jaise… addictive 😘,jnti ho jaan m kassh vha hota to apko apne hath se chocolate khilta apni lap pr bitha kr..😉
+
+
+
+babyyy u know m kitna preshn rehta hu jab aap baat krne nhi ati ho kaise kaisa din niklta hu  mein ye to hi jnta hu...🥹
+
+
+
+</p></div><!-- PAGE 4 --><div class="page"><img class="gif" src="mm1.gif"><h2>🧸 Teddy Day</h2><img class="photo" src="teddy.jpg"><p>Jab aap paas nahi hoti, 
+
+
+
+Apki yaadein mujhe hug karti hain ❤️,baby apko yaad hai pichle saal jb aap teddy bear k bolti thi k apka Mann hota hai uske sath hug krke so jau tb mujhe bohot jealousy hoti thi but I know ur teddy bear is only-naitik-. He na jaan..?
+kssh m teddy hi hota to roj apko bahon m sota....🫠
+
+
+</p></div><!-- PAGE 5 --><div class="page"><img class="gif" src="mm2.gif"><h2>🤞 Promise Day</h2><img class="photo" src="promise.jpg"><p>M jnta hu jaan m kuch confirm nhi bolunga but I promise apke  exams ke baad April mein aaunga. 
+
+
+
+Date fix nahi… par main fix hoon — apke liye  💍
+
+
+
+</p></div><!-- PAGE 6 --><div class="page"><img class="gif" src="mm8.gif"><h2>🤗 Hug Day</h2><img class="photo" src="hug.jpg"><p>Apka hug meri har problem ka solution hai ❤️,u know jaan kitne aise moments aye jisme bss yhi Mann hua k bss apko apni bahoo m bhr lu baki puri duniya jye bhaad m.
+
+
+
+baby u know m humesha kuch n kuch try krte rehta hu jisse aap khush ho jaao...
+
+
+
+</p></div><!-- PAGE 7 --><div class="page"><img class="gif" src="mm4.gif"><img class="gif" src="mm7.gif"><h2>💋 Kiss Day</h2><img class="photo" src="kiss.jpg"><img class="photo" src="kiss2.jpg"><img class="photo" src="kiss3.jpg"><img class="photo" src="kiss4.jpg"><p>Har kiss ek promise hai — 
+
+
+
+chahe distance ho ya duniya, aap meri ho.aap nhi jnti jaan apki hr ek kiss mujhe kitna khushi deta hai bhale vo  kiss apke snaps s mila ho chats m...
+mujhe to bss yhi regret hota hai jaan k me vha nhi hu nhi humra rooj hi kiss day hota...
+
+
+
+</p></div><!-- PAGE 8 : MISS YOU --><div class="page"><img class="gif" src="mm6.gif"><h2>❤️ Valentine’s Day</h2><img class="photo" src="valentine.jpg"><img class="photo" src="valentine2.jpg"><img class="photo" src="valentine3.jpg"><img class="photo" src="valentine4.jpg"><img class="photo" src="valentine5.jpg"><img class="photo" src="valentine6.jpg"><p>29 October 2024 —</p>
+
+<p id="counter" style="font-weight:bold; margin-top:10px;"></p> 
+
+
+
+woh din jab meri zindagi ko aap phli br mili thi.
+
+
+
+I miss you more than words can explain. 
+
+
+
+Har chhoti chhoti cheez mujhe apki yaad dila deti hai — 
+
+
+
+Apki hasi, apki baatein, apka hona.
+
+
+
+April mein, apke exams ke baad… 
+
+
+
+jab main apse milunga, 
+
+
+
+shayad kuch bol na paun, 
+
+
+
+par mera hug sab kuch keh dega ❤️
+
+baby isbr mene isme koi jyda romance k related baat mhi ki bcz mujhe mera pyar jtna tha apke samne k apko pta chale how much i lovve uu,how much i'am putting efforts on every single things on you..
+
+,Baby I hope that k isbr pkka sab shi ho jyega,m bohot jyda apne dil k smjha kr betha hu,or jnta hu aap boli to acha hi hoga...,Baby bohot mehnat lgi hai ye banane m shi m bohot mtlb bohot jyda hi hath drd krne lge jaan mere,ab bss i'am waiting for your reply and my gift...😉
+
+Sweetheart mere jaise koi pyar apko kr pyega...?,Mere jaisa koi apki care kr pyega...?, Mere jitna koi efforts lga pyega...?, Apke liye koi khud k nssh katt pyega..?, Itna khush rkhne vala koi hoga...?, Apki hr baat mnane vala koi hoga..?, Mere jitna wait krega koi...?🥺
+baby koi itna pyar kr pyega apko vo bhi bima lust k...soryy lust to hai mujhme kutt kutt ke but sirf apke liye.., Itna romantic husband mil payega aoko jaan....
+
+
+I Loveeee uuuuuu jaaannn😘😘😘😘😘
+
+
+
+     
+
+   <strong>Your Husband — Naitik (saiyan ji, husband, cupcake, daddy 😉)😘😘♥️</strong>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<button onclick="toggleSecret()" style="margin-top:14px;">
+
+  Tap here… something I never say 💌
+
+</button>
+
+
+
+
+
+
+
+<p id="secretText" style="display:none; margin-top:12px;">
+
+  Tum meri zindagi ka wo hissa ho,
+
+  jise main lafzon me kam,
+
+  aur dil se zyada mehsoos karta ho ❤️
+
+  I loveeeeeeeeee uuuuuuuuuu meriiii jaaaaaannnnnnnn🥹🥹
+
+  or ye m puri duniya k smne keh skta hu k m sbse jyda pyar apni jaaan s krta hu....😘😘
+
+
+
+</p></div>
+
+  <div class="nav">
+
+  <button onclick="prev()">◀ Prev</button>
+
+  <button onclick="next()">Next ▶</button>
+
+
+
+  <!-- LAST PAGE ONLY BUTTONS -->
+
+  <span id="lastPageButtons" style="display:none;">
+
+    <button onclick="openVoiceSurprise()" style="margin-top:10px;">
+
+      Hear My Voice 🎧
+
+    </button>
+
+  </span>
+
+  </div>
+
+
+
+
+
+<div id="voiceSurprise" class="last-surprise">
+
+  <p style="font-size:18px;">Close your eyes & listen ❤️</p>
+
+
+
+  <audio controls style="margin-top:10px;">
+
+    <source src="voice-note.mp3" type="audio/mpeg">
+
+  </audio>
+
+
+
+  <button onclick="revealNote()" style="margin-top:18px;">
+
+    One Last Surprise 💖
+
+  </button>
+
+
+
+  <p id="finalNote">
+
+    Tum meri zindagi ka wo hissa ho,<br>
+
+    jise main lafzon me kam,<br>
+
+    aur dil se zyada mehsoos karta ho ❤️<br><br>
+
+    I love you forever, Anu.
+   m jnta hu jaan ye itna bda surprise dekh kr aap bohog khush hogi or 
+    mujhe bss yhi khushi chhaiye apke face pr....
+
+  </p>
+
+
+
+  <button onclick="openSnap()" style="margin-top:22px;">
+
+    Reply to Naitik 👻💛
+
+  </button>
+
+<div style="margin-top:20px;">
+
+  <button id="startRec">🎤 💌Anu left a voice for Naitik ♥️</button>
+
+  <button id="stopRec" disabled>⏹ Stop</button>
+
+  <p id="recStatus"></p>
+
+  <p id="voiceLabel" style="display:none;">
+
+  🎧 Voice saved for Naitik ❤️
+
+  </p>
+
+
+
+  <audio id="playback" controls style="display:none; margin-top:10px;"></audio>
+
+</div>
+
+<script>
+
+/* ---------- DATE COUNTER ---------- */
+
+const startDate = new Date("2024-10-29");
+
+function updateCounter(){
+
+  const now = new Date();
+
+  const diff = now - startDate;
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+  document.getElementById("counter").innerText =
+
+    `It’s been ${days} days since we met ❤️`;
+
+}
+
+updateCounter();
+
+
+
+
+
+
+
+/* ---------- PAGES ---------- */
+
+const pages = document.querySelectorAll(".page");
+
+let i = 0;const dots = document.getElementById("dots");
+
+pages.forEach(()=>dots.innerHTML += "<span></span>");
+
+const dotEls = dots.querySelectorAll("span");
+
+i = 0;
+
+function showPage() {
+
+  pages.forEach(p => p.style.display = "none");
+
+  pages[i].style.display = "block";
+
+
+
+  // retrigger animation
+
+  pages[i].style.animation = "none";
+
+  pages[i].offsetHeight;
+
+  pages[i].style.animation = "pageFade .6s ease";
+
+
+
+  // Mood background change
+
+  changeMoodBG(i);
+
+
+
+  // Nav dots
+
+  dotEls.forEach(d => d.classList.remove("active"));
+
+  dotEls[i].classList.add("active");
+
+
+
+  // Petals
+
+  createPagePetals(i);
+
+
+
+  // LAST PAGE BUTTONS ONLY
+
+  document.getElementById("lastPageButtons").style.display = (i === pages.length - 1) ? "inline-block" : "none";
+
+
+
+  // Vibrate only on last page
+
+  if(i === pages.length - 1){
+
+    navigator.vibrate?.(200);
+
+  }
+
+}
+
+
+
+  function prev(){
+
+  if(i > 0){
+
+    i--;
+
+    changeSong(i);   // ✅ USER CLICK → MUSIC OK
+
+    showPage();
+
+  }
+
+}
+
+
+
+function next(){
+
+  if(i < pages.length - 1){
+
+    i++;
+
+    changeSong(i);   // ✅ USER CLICK → MUSIC OK
+
+    showPage();
+
+  }
+
+}
+
+
+
+/* ---------- UNLOCK ---------- */
+
+function unlock(){
+
+  const pass = document.getElementById("pass").value.trim();
+
+  const lock = document.getElementById("lock");
+
+  const book = document.querySelector(".book");
+
+
+
+  if(pass.toLowerCase() === "anu.naitik"){
+
+    lock.style.display = "none";
+
+    book.style.display = "block";
+
+  
+
+    i = 0;
+
+    showPage();
+
+
+
+    // 🔥 FIRST SONG START (unlock button = user gesture)
+
+    music.src = songs[0];
+
+    music.currentTime = 0;
+
+    music.volume = 0.6;
+
+    music.play();
+
+
+
+    currentSong = 0;
+
+    initVoiceRecorder();
+
+  } else {
+
+    lock.classList.add("shake");
+
+    setTimeout(()=>lock.classList.remove("shake"),400);
+
+  }
+
+  }
+
+
+
+                                       
+
+/* ---------- HEARTS ---------- */
+
+setInterval(()=>{
+
+  let h = document.createElement("div");
+
+  h.className = "heart";
+
+  h.innerHTML = "❤️";
+
+  h.style.left = Math.random()*100 + "%";
+
+  document.body.appendChild(h);
+
+  setTimeout(()=>h.remove(),6000);
+
+},500);
+
+
+
+/* ---------- SECRET / CONFETTI ---------- */
+
+function toggleSecret(){
+
+  const s = document.getElementById("secretText");
+
+  s.style.display = (s.style.display === "none") ? "block" : "none";
+
+  createConfetti(); // mini confetti on toggle
+
+}
+
+function openSnap(){
+
+  window.open("https://www.snapchat.com/add/naitik_tiwari08","_blank");
+
+}
+
+
+
+/* ---------- MINI CONFETTI ---------- */
+
+function createConfetti(){
+
+  const colors = ["#ff4d6d","#ffb3c1","#ff66a3","#ff99cc"];
+
+  for(let j=0;j<60;j++){
+
+    let conf = document.createElement("div");
+
+    conf.style.position = "fixed";
+
+    conf.style.width = "6px";
+
+    conf.style.height = "6px";
+
+    conf.style.background = colors[Math.floor(Math.random()*colors.length)];
+
+    conf.style.top = "0px";
+
+    conf.style.left = Math.random()*window.innerWidth + "px";
+
+    conf.style.borderRadius = "50%";
+
+    conf.style.zIndex = 15;
+
+    conf.style.opacity = Math.random();
+
+    document.body.appendChild(conf);
+
+    let speedY = 2 + Math.random()*3;
+
+    let speedX = -1 + Math.random()*2;
+
+    let fall = setInterval(()=>{
+
+      let top = parseFloat(conf.style.top);
+
+      let left = parseFloat(conf.style.left);
+
+      if(top > window.innerHeight){
+
+        clearInterval(fall);
+
+        conf.remove();
+
+      } else {
+
+        conf.style.top = top + speedY + "px";
+
+        conf.style.left = left + speedX + "px";
+
+      }
+
+    },20);
+
+  }
+
+  }
+
+/* ---------- PAGE-SPECIFIC PETALS / FLOWERS ---------- */
+
+function createPagePetals(pageIndex){
+
+  // Remove old petals
+
+  document.querySelectorAll(".petal").forEach(p=>p.remove());
+
+
+
+  const petalsByPage = [
+
+    ["🌹","🌹","🌹"], // Page 0
+
+    ["🌹","🌹"],      // Page 1
+
+    ["💍","💍"],      // Page 2
+
+    ["🍫","🍫"],      // Page 3
+
+    ["🧸","🧸"],      // Page 4
+
+    ["🤞","🤞"],      // Page 5
+
+    ["🤗","🤗"],      // Page 6
+
+    ["💋","💋"],      // Page 7
+
+    ["❤️","❤️","❤️"] // Page 8
+
+  ];
+
+
+
+  const petals = petalsByPage[pageIndex] || [];
+
+  petals.forEach(emoji=>{
+
+    let p = document.createElement("div");
+
+    p.className = "petal";
+
+    p.innerHTML = emoji;
+
+    p.style.position = "fixed";
+
+    p.style.fontSize = "24px";
+
+    p.style.left = Math.random()*window.innerWidth + "px";
+
+    p.style.top = "-40px";
+
+    p.style.zIndex = 15;
+
+    document.body.appendChild(p);
+
+
+
+    let speedY = 2 + Math.random()*2;
+
+    let speedX = -1 + Math.random()*2;
+
+    let fall = setInterval(()=>{
+
+      let top = parseFloat(p.style.top);
+
+      let left = parseFloat(p.style.left);
+
+      if(top > window.innerHeight){
+
+        clearInterval(fall);
+
+        p.remove();
+
+      } else {
+
+        p.style.top = top + speedY + "px";
+
+        p.style.left = left + speedX + "px";
+
+      }
+
+    },20);
+
+  });
+
+}
+
+/* ---------- MUSIC (SAFE VERSION) ---------- */
+
+const songs = [
+
+  "song0.mp3","song1.mp3","song2.mp3","song3.mp3",
+
+  "song4.mp3","song5.mp3","song6.mp3","song7.mp3","song8.mp3"
+
+];
+
+
+
+const music = document.getElementById("music");
+
+let currentSong = -1;
+
+
+
+function changeSong(index){
+
+  if(currentSong === index) return;
+
+  currentSong = index;
+
+
+
+  music.pause();
+
+  music.src = songs[index];
+
+  music.currentTime = 0;
+
+  music.volume = 0.5;
+
+  music.play();
+
+}
+
+  function openVoiceSurprise(){
+
+  document.getElementById("voiceSurprise").style.display = "flex";
+
+}
+
+
+
+function revealNote(){
+
+  document.getElementById("finalNote").style.display = "block";
+
+  }
+
+  function changeMoodBG(index){
+
+  const moods = [
+
+    "linear-gradient(135deg,#fff1f5,#ffd6e0)",   // Page 0
+
+    "linear-gradient(135deg,#ffe6f0,#ffb3c1)",   // Page 1
+
+    "linear-gradient(135deg,#fff5cc,#ffd966)",   // Page 2
+
+    "linear-gradient(135deg,#3b1d1d,#5a2a2a)",   // Page 3
+
+    "linear-gradient(135deg,#f2e9ff,#d6c7ff)",   // Page 4
+
+    "linear-gradient(135deg,#e0fff5,#b2f0e6)",   // Page 5
+
+    "linear-gradient(135deg,#e6f2ff,#b3d9ff)",   // Page 6
+
+    "linear-gradient(135deg,#ffe6ea,#ffb3c7)",   // Page 7
+
+    "linear-gradient(135deg,#120018,#2a001a)"    // Page 8
+
+  ];
+
+
+
+  document.body.style.background = moods[index] || moods[index]
+
+  }
+
+  /* ========= VOICE REACTION (SAFE) ========= */
+
+function initVoiceRecorder(){
+
+  const startBtn = document.getElementById("startRec");
+
+  const stopBtn = document.getElementById("stopRec");
+
+  const statusTxt = document.getElementById("recStatus");
+
+  const playback = document.getElementById("playback");
+
+  const label = document.getElementById("voiceLabel");
+
+
+
+  let mediaRecorder;
+
+  let audioChunks = [];
+
+
+
+  startBtn.onclick = async () => {
+
+  try {
+
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+
+
+
+    mediaRecorder = new MediaRecorder(stream);
+
+    audioChunks = [];
+
+
+
+    mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
+
+
+
+    mediaRecorder.onstart = () => {
+
+      statusTxt.innerText = "🎙 Recording… bol dil se ❤️";
+
+    };
+
+
+
+    mediaRecorder.onstop = () => {
+
+      const audioBlob = new Blob(audioChunks, { type: "audio/webm" });
+
+      playback.src = URL.createObjectURL(audioBlob);
+
+      playback.style.display = "block";
+
+      statusTxt.innerText = "💖 Voice recorded successfully";
+
+    };
+
+
+
+    mediaRecorder.start();
+
+    startBtn.disabled = true;
+
+    stopBtn.disabled = false;
+
+
+
+  } catch (err) {
+
+    alert("Mic permission denied 😢");
+
+    console.error(err);
+
+  }
+
+};
+
+
+
+  stopBtn.onclick = () => {
+
+    mediaRecorder.stop();
+
+    startBtn.disabled = false;
+
+    stopBtn.disabled = true;
+
+  };
+
+  }
+
+</script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
