@@ -1549,12 +1549,35 @@ function initVoiceRecorder(){
   };
 
   }
+  
+/* ---------- FIX MUSIC OVERLAP WITH VOICE NOTE ---------- */
+
+const bgMusic = document.getElementById("music");
+const voiceAudio = document.querySelector("#voiceSurprise audio");
+
+// Jab voice note play ho
+voiceAudio.addEventListener("play", () => {
+  if (!bgMusic.paused) {
+    bgMusic.pause();
+  }
+});
+
+// Jab voice note pause ya end ho
+voiceAudio.addEventListener("pause", () => {
+  bgMusic.play();
+});
+
+voiceAudio.addEventListener("ended", () => {
+  bgMusic.play();
+});
+
 
 </script>
 
 </body>
 
 </html>
+
 
 
 
